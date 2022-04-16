@@ -19,15 +19,15 @@ NewStartTreeViews 프로젝트에 사용한 UI와 MVVM에 대한 이야기입니
 
 ## 프로젝트 구조
 * 📁 Directory    
-  * 📁 Data   
-     * 📃 DirectoryItem.cs
-     * 📃 DirectoryItemType.cs     
-  * 📁 ViewModels
-     * 📁 Base      
-         * 📃 BaseViewModel.cs
-         * 📃 RelayCommand.cs
-     * 📃 DirectoryItemViewModel.cs
-     * 📃 DirectoryStructureViewModel.cs
   * 📃 DirectoryStructure.cs
+* 📁 Data   
+   * 📃 DirectoryItem.cs
+   * 📃 DirectoryItemType.cs     
+* 📁 ViewModels
+   * 📁 Base      
+       * 📃 BaseViewModel.cs
+       * 📃 RelayCommand.cs
+   * 📃 DirectoryItemViewModel.cs
+   * 📃 DirectoryStructureViewModel.cs
 * 📃 HeaderToImageConverter.cs
 <br />
