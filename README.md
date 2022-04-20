@@ -52,7 +52,8 @@ public class BaseViewModel : INotifyPropertyChanged // 구현한 클래스로부
     }
 }
 ```
-BaseViewModel 클래스를 상속받아 자산(Property)이 변경되면 언제든지 알람을 받거나 이벤트 처리 할 수 있다.   
+BaseViewModel 클래스를 상속받아 자산(Property)이 변경되면 언제든지 알람을 받거나 이벤트 처리 할 수 있다.  
+<br />
 Ex) 예제 코드  
 ```
 public class Person : BaseViewModel
@@ -63,6 +64,7 @@ public class Person : BaseViewModel
 새로운 value가 들어오면 GivenName의 값이 새 value로 변경되며 OnPropertyChanged를 통해 알림을 받는다.     
 출처 : Github fody => https://github.com/Fody/PropertyChanged
 
+<br /> 
 
 ### RelayCommand
 ```
