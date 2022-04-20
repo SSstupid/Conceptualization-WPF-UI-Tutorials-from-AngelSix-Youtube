@@ -17,9 +17,9 @@ NewStartTreeViews 프로젝트에 사용한 UI와 MVVM에 대한 이야기입니
 * [Visual Studio 2022 Preview](https://visualstudio.microsoft.com/ko/vs/preview/)
 <br />
 
-## 프로젝트 구조
+## 프로젝트구조
 * 📁 Directory    
-  * 📃 DirectoryStructure.cs
+  * 📃 DirectoryStructure.cs 
 * 📁 Data   
    * 📃 DirectoryItem.cs
    * 📃 DirectoryItemType.cs     
@@ -30,4 +30,23 @@ NewStartTreeViews 프로젝트에 사용한 UI와 MVVM에 대한 이야기입니
    * 📃 DirectoryItemViewModel.cs
    * 📃 DirectoryStructureViewModel.cs
 * 📃 HeaderToImageConverter.cs
-<br />
+<br />   
+
+## UI 설명 목차
+- [BaseViewModel](#BaseViewModel)
+
+
+### BaseViewModel
+```
+/// <summary>
+/// A base view model that fires Property Changed events as needed
+/// </summary>
+[AddINotifyPropertyChangedInterface]
+public class BaseViewModel : INotifyPropertyChanged
+{
+    /// <summary>
+    /// The event that is fired when any child property changes its value
+    /// </summary>
+    public event PropertyChangedEventHandler PropertyChanged = (sender, e) => {};
+}
+```
