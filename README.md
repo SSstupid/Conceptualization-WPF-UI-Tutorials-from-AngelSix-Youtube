@@ -52,7 +52,7 @@ NewStartTreeViews 프로젝트에 사용한 UI와 MVVM에 대한 이야기입니
 public class BaseViewModel : INotifyPropertyChanged // 구현한 클래스로부터 상속 받는다.
 {
     // The event that is fired when any child property changes its value
-    public event PropertyChangedEventHandler PropertyChanged = (sender, e) => {}; // 자산(property)이 바뀌면 언제든지 알 수있다.
+    public event PropertyChangedEventHandler PropertyChanged = (sender, e) => {}; // 자산(property)이 바뀌면 바로 알 수있다.
     
     // Call this to fire a<see cref="PropertyChanged"/> event
     public void OnPropertyChanged(string name)
