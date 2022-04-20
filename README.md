@@ -42,6 +42,8 @@ NewStartTreeViews 프로젝트에 사용한 UI와 MVVM에 대한 이야기입니
 ## UI 설명 목차
 - [BaseViewModel](#BaseViewModel)
 - [RelayCommand](#RelayCommand)
+- [DirectoryItem](#DirectoryItem)
+
 
 ### BaseViewModel
 ```
@@ -104,7 +106,26 @@ class RelayCommand : ICommand
    }
 }
 ```
-저는 주로 클릭이 가능 한곳에서 사용했습니다.  
-예를들면 버튼과 폴더 클릭시 이어질 행동에 사용 했습니다.  
-Ex) 창의 최소화 종료 버튼, 폴더 클릭스 하위 파일 보기  
+저는 주로 클릭이 가능 한곳에서 사용했습니다.   
+예를들면 버튼과 폴더 클릭시 이어질 행동에 사용 했습니다.   
+Ex) 창의 최소화, 종료 버튼, 폴더 클릭시 하위 파일 보기   
+CanExecute(object parameter)를 활용해서 이어질 행동을 실행할 수도, 막을 수도 있습니다.
+(버튼 클릭이 안된다던가, 특정상황시 비활성화 등등)  
+<br />   
 
+### DirectoryItem
+```
+// Information about a directory item as a drive, a file or a folder
+public class DirectoryItem
+{
+    // The type of this item
+    public DirectoryItemType Type { get; set; }
+
+    // The absolute path to this item
+    public string FullPath { get; set; }
+
+    // The name of this directory item  //탐색한 파일의 타입을 읽어옴 => 파일이 드라이브 or 폴더인지 구분하는 문
+    public string Name { get { return this.Type == DirectoryItemType.Drive ? this.FullPath : DirectoryStructure.GetFileFolderName(this.FullPath); } }
+}
+```
+Model부분으로 폴더의 타입, 경로, 이름을 설정해두었다
