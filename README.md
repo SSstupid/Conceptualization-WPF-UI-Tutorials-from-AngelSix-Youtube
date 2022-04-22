@@ -17,6 +17,7 @@ AngelSix님의 유튜브 동영상을 보면서 WPF를 공부하고 있습니다
 <br />  
 
 # MVVM
+## 현재 정리 
 느낀점 노트 (후에 정리 할것)
 MVVM은 구체적으로 확립된 개념이 아니다.  
 근거는 많은 사람들이 MVVM 패턴이 가장 중요하다고 하지만   
@@ -28,7 +29,8 @@ MVVM은 말로 설명하기가 어렵고 경험함으로 써 익힐 수 있다�
 1.ViewModel은 View와 특별한 의존성을 가지지 않는다. (ViewModel은 그 자체로 존재 할 수 있다.)    
 2.ViewModel은 View를 추상화한 것    
 (1,2를 조합했을 때 받은 느낌은 그릇(View)에 물(ViewModel)을 담으면 물그릇이 되고 밥(ViewModel)을 담으면 밥그릇이 된다.)   
-3. ??
+3. ViewModel에는 UI 관련된 요소를 넣으면 안 된다. (System.Windows 나 System.Windows.Controls 따위 것들 혹은 DependencyObject 관련된 것들 등등..)            
+4. ??       
 
    
 <br />    
@@ -63,7 +65,21 @@ View 로직이 들어가면 어떠한 형태로든지 간에 Model이나 ViewMod
 (View는 디자이너 영역이다, 디자이너가 로직을 짜는 것은 이상하다.)
 (이견이 많음)
 예외사항 =>  
-Converter, Trigger, Behavior 이렇게 3가지 상황에서는 예외
+Converter, Trigger, Behavior 이렇게 3가지 상황에서는 예외 + 바로 상위 View에 대한 설정     
+      
+      
+UI 와 관련이 있을만한 요소나 속성 따위 등을 ViewModel에서 완전히 제거하고       
+딱 Model을 이용한 데이터 핸들링만 집중하는 것이 중요하다고 할 수 있다.        
+그리고 View에 영향을 주어야 하는 것들이라면 Binding을 통해서만 조작     
+
+
+<br />   
+<br />   
+MVVMd의 대한 개념을 익히고 있는데 굉장히 이해하기 어렵다,      
+알지 못하는 개념과 단어들. ;;       
+어떠한부분을 설명하고 그 것을 우회하기위해, MVVM를 지키기 위해 Converter, Trigger, Behavior,AttachedProperty 등등을 사용하면 된다,    
+이렇게하면 된다라고하는데 이해 할 수가 없다. 그 개념을 모르니까...      
+경험 후 => 개념정독(MVVM) => 경험 .... 무한순환으로 돌아가야 이해할 수 있을 것 같다.    
     
 # NewStartTreeViews   
 Nuget Package등 호환 문제로 .Net Framework 4.8로 시작했습니다.    
