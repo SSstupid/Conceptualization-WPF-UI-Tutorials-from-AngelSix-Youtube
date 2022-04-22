@@ -11,18 +11,21 @@ AngelSix님의 유튜브 동영상을 보면서 WPF를 공부하고 있습니다
 일단 가능한대로 적어보고 차차 수정해나가는 식으로 방향을 잡겠습니다.
 
 # 프로젝트 구성
+* MVVM
 * NewStartTreeViews
- * Chating App
+* Chating App
+<br />  
 
 # NewStartTreeViews 
 Nuget Package등 호환 문제로 .Net Framework 4.8로 시작했습니다.    
 NewStartTreeViews 프로젝트에 사용한 UI와 MVVM에 대한 이야기입니다.
+<br />  
 
 ## 개발정보
 * .NET 4.8 (.Net Framework)
 * C# 7.3
 * [Visual Studio 2022 Preview](https://visualstudio.microsoft.com/ko/vs/preview/)
-<br />
+<br />  
 
 ## 프로젝트구조
 * 📁 Directory    
