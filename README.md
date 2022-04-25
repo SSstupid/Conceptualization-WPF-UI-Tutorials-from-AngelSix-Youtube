@@ -17,7 +17,9 @@ AngelSix님의 유튜브 동영상을 보면서 WPF를 공부하고 있습니다
 <br />  
 
 # MVVM
-**현재 정리 중**             
+**현재 정리 중**       
+![MVVM](https://user-images.githubusercontent.com/90036120/165052637-8c495f75-0cef-4925-ad6b-4180e7177909.png)
+
          
 느낀점 노트 (후에 정리 할것)
 MVVM은 구체적으로 확립된 개념이 아니다.  
