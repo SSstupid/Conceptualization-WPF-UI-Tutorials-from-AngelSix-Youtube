@@ -34,7 +34,6 @@ MVVM은 말로 설명하기가 어렵고 경험함으로 써 익힐 수 있다�
 (1,2를 조합했을 때 받은 느낌은 그릇(View)에 물(ViewModel)을 담으면 물그릇이 되고 밥(ViewModel)을 담으면 밥그릇이 된다.)   
 3. ViewModel에는 UI 관련된 요소를 넣으면 안 된다. (System.Windows 나 System.Windows.Controls 따위 것들 혹은 DependencyObject 관련된 것들 등등..)            
 4. 디자인과 로직을 최대한 분리하는 것( 같은 말만 반복하는 느낌 모아서 정리)
-5. ??
 
    
 <br />    
