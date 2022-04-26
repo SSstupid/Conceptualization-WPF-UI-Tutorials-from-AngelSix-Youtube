@@ -99,14 +99,36 @@ MVVM의 대한 개념을 익히고 있는데 굉장히 이해하기 어렵다,
 경험 후 => 개념정독(MVVM) => 경험 .... 무한순환으로 돌아가야 이해할 수 있을 것 같다.     <br/> <br/>              
                    
  
-**Trigger, Behavior이 정확히 뭘 뜻하는 걸까??**
+**Trigger, Behavior이 정확히 뭘 뜻하는 걸까??**      
+        
+*Trigger는 어떤 조건, 이벤트 등 주어졌을 때 묵시적으로 컨트롤의 상태 또는 이벤트 핸들러 등을 호출하는 기능을 의미한다.
+*즉, Trigger는 사용하면 엘리먼트의 프로퍼티나 데이터 바인딩, 이벤트에서 발생하는 변화에 엘리먼트와 컨트롤이 어떻게 반응할지를 정할 수 있다.
+```
+<TextBlock Name="tblk1" Text="Hello, WPF world" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="Green"></Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Red"/>
+                            <Setter Property="TextDecorations" Value="Underline"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+```
+
+<br />   
+
+*Behavior란?
+말그대로 행동을 가지고 있는 객체입니다. 예를들면 드래그앤드랍이라는 행동이 있다면 그 행동 하나를 가지고 있는 객체입니다.    
+드래그앤드랍 기능을 가지는 Behavior를 원하는 실버라이트 컨트롤에 부여하면 그 컨트롤은  드래그앤드랍기능을 사용 할 수 있도록 되는 것이죠.   
                   
 <br />   
 <br />   
 
 +++
 MVVM의 패턴을 강력하게 고집하는데 솔직하게 말하자면 굳이 이렇게까지 해야하는지는 잘 모르겠습니다.                
-디자인과 개발의 영역이 구분되는 건 졸습니다만, 너무 강력하게 영역을 분할할려고하니(서양방식 인듯?)
+디자인과 개발의 영역이 구분되는 건 좋습니다만, 너무 강력하게 영역을 분할할려고하니(서양방식 인듯?)
 오히려 개발할 때 불편을 느낄 수 있을 것 같습니다.
     
 # NewStartTreeViews   
