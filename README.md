@@ -20,48 +20,62 @@ AngelSix님의 유튜브 동영상을 보면서 WPF를 공부하고 있습니다
 **현재 정리 중**       
 ![MVVM](https://user-images.githubusercontent.com/90036120/165052637-8c495f75-0cef-4925-ad6b-4180e7177909.png)
 
-         
+View는 디자이너 영역으로 눈에 보여지는 그래픽입니다.                   
+                  
+ViewModel은 View와 Model사이에서 연결 해주는 역활입니다.(전달자)                  
+ViewModel은 로직이 포함되어 있습니다.           
+                  
+Model은 Data부분 입니다. DB와 연동하여 Data를 가져 올 수도 있습니다.                
+
+Command는 캡슐화된 것을 요청하는 부분입니다.                                
+예를들면 => View에서 'ABC'라는 것을 요청하고 ViewModel은 ABC를 요청받아 처리하고 (Model에서 value받고) Binding으로 값을 제공합니다.              
+여기서 View는 ABC라는 것을 요청만 할뿐 ABC가 무엇인지는 알 필요가 없습니다.               
+즉 View와 ViewModel간의 의존성이 없는 부분이라고 할 수 있습니다.           
+만약 View가 ABC를 요청할떄 'ABC는 무엇무엇이다' ViewModel아 너 이거 있니?라고 한다면 ViewModel은 ABC에 대한 고정적인 부분이 필요하고 의존성이 생깁니다. (재고할것)         
+(무엇인지 안다면 굳이 ViewModel에 요청 할 필요가 없다고 생각이 듭니다. View에서 바로 처리해버리면 되니까, 그러나 MVVM에서 View는 이러한 처리를 하지 않습니다.) 
+
+
+              
 느낀점 노트 (후에 정리 할것)
-MVVM은 구체적으로 확립된 개념이 아니다.  
+MVVM은 구체적으로 확립된 개념이 아니다.  (Model, View, ViewModel로 나눈다는 개념이지만 그 나누는 방법과 View와 ViewModel을 구분하는 구체적인 것이 없다.)
 근거는 많은 사람들이 MVVM 패턴이 가장 중요하다고 하지만   
 사실 MVVM은 "이것이다"라고 하는 명확하고 정확한 설명이 없다. 즉 MVVM에 대한 설명을 듣고 곧 바로 이해 할 수가 없다(처음 접하는 경우),   
 MVVM은 말로 설명하기가 어렵고 경험함으로 써 익힐 수 있다고 한다.   
 그래서 받은 느낌은 "MVVM에서 지켜할 기준은 있지만 정해진 형식은 없다"입니다.   
-여러 타입의 View, ViewModel, Model이 있는 것 같습니다.   
+(여러 타입의 View, ViewModel, Model이 있는 것 같습니다.)                    
+                  
 다만 지켜할 MVVM의 기준이 있습니다.   
 1.ViewModel은 View와 특별한 의존성을 가지지 않는다. (ViewModel은 그 자체로 존재 할 수 있다.)    
 2.ViewModel은 View를 추상화한 것    
-(1,2를 조합했을 때 받은 느낌은 그릇(View)에 물(ViewModel)을 담으면 물그릇이 되고 밥(ViewModel)을 담으면 밥그릇이 된다.)   
-3. ViewModel에는 UI 관련된 요소를 넣으면 안 된다. (System.Windows 나 System.Windows.Controls 따위 것들 혹은 DependencyObject 관련된 것들 등등..)            
-4. 디자인과 로직을 최대한 분리하는 것( 같은 말만 반복하는 느낌 모아서 정리)
-
+3. ViewModel에는 UI 관련된 요소를 넣으면 안 된다. (System.Windows 나 System.Windows.Controls 관련됫 것 Or DependencyObject 관련된 것들 등등..)            
+4. 디자인과 로직을 최대한 분리하는 것(Xaml에 Code behind를 가능한 넣지 말 것)          
+5. 데이터는 뷰에서 노출되어야 한다.               
+6. 뷰에서 사용 가능한 커맨드들을 제공한다. 이 커맨드는 ICommand를 통해 만든다.                          
    
 <br />    
-ViewModel은 그 View가 가진 속성(Property)이나 행위(Behavior), 동작(Command) 따위만을 뽑아내서   
+ViewModel은 그 View가 가진 속성(Property)이나 행위(Behavior), 동작(Command)을 뽑아내서   
 정리하고 유지하는 클래스 정도라고 할 수 있다.     
      
 <br />     
-    
-start     
+     
 MVVM을 보고 느낀점은 굳이 귀찮게 이렇게 구분하는 이유가 궁금했다.   
 MVVM의 의도와 장점을 보자면  
 View와 ViewModel, Model 이렇게 세분화 시킴으로써   
 디자인, 동작, 데이터 이런 식으로 분리를 할 수있다.   
-개발자가 혼자 모두 처리하는 방식이 있다면,   
+개발자가 혼자 모두 처리하는 방식이 있다고 하면,   
 MVVM형식은 : View부분은 디자니어, ViewModel은 개발자, Model은 서버와 연동함으로 써 데이터를 가져 올 수있게 된다.     
 이렇게 세분화되어 만들어진 UI는 잘 다듬어서 다른 곳에서 재사용이 가능해진다.(크로스 플랫폼)    
-또는 같은 플랫폼에서 UI를 재사용해 개발 시간을 단축 시킬 수 있다.   end
+또는 같은 플랫폼에서 UI를 재사용해 개발 시간을 단축 시킬 수 있다.               
      
 <br />        
 
-start   
 View 영역의 UI 요소는 Binding을 위한 DP 를 구성하고 있고     
 Binding은 기본적으로 DP 간 property 연결을 구현하고 있지만    
 DataContext를 통해 ViewModel을 할당한 뒤 Binding으로 연결된 property 를 동기화하여    
-View와 ViewModel, 또한 View와 Model 간의 관계를 느슨한 결합으로 처리하는 방식을    
-WPF에서 기본적으로 제공해 준다  end  
+View와 ViewModel 간의 관계를 느슨한 결합으로 처리하는 방식을 (WPF에서)기본적으로 제공해 준다.           
     
 <br />    
+
 "xaml.cs 에 생성자 구문을 제외하고 아무것도 넣지마"    
 View에 로직을 넣지 말라는 것을 의미한다.   
 View 로직이 들어가면 어떠한 형태로든지 간에 Model이나 ViewModel에 의존성을 갖게 된다.   
@@ -71,15 +85,15 @@ View 로직이 들어가면 어떠한 형태로든지 간에 Model이나 ViewMod
 Converter, Trigger, Behavior 이렇게 3가지 상황에서는 예외 + 바로 상위 View에 대한 설정     
       
       
-UI 와 관련이 있을만한 요소나 속성 따위 등을 ViewModel에서 완전히 제거하고       
+UI 와 관련이 있을만한 요소나 속성 등을 ViewModel에서 완전히 제거하고       
 딱 Model을 이용한 데이터 핸들링만 집중하는 것이 중요하다고 할 수 있다.        
-그리고 View에 영향을 주어야 하는 것들이라면 Binding을 통해서만 조작     
+그리고 View에 영향을 주어야 하는 것들이라면 Binding을 통해서 조작한다.     
 
 
 <br />   
 <br />   
 MVVM의 대한 개념을 익히고 있는데 굉장히 이해하기 어렵다,      
-알지 못하는 개념과 단어들. ;;       
+알지 못하는 개념과 단어들;;       
 어떠한부분을 설명하고 그 것을 우회하기위해, MVVM를 지키기 위해 Converter, Trigger, Behavior,AttachedProperty 등등을 사용하면 된다,    
 이렇게하면 된다라고하는데 이해 할 수가 없다. 그 개념을 모르니까...      
 경험 후 => 개념정독(MVVM) => 경험 .... 무한순환으로 돌아가야 이해할 수 있을 것 같다.     <br/> <br/>              
@@ -97,7 +111,7 @@ MVVM의 패턴을 강력하게 고집하는데 솔직하게 말하자면 굳이 
     
 # NewStartTreeViews   
 Nuget Package등 호환 문제로 .Net Framework 4.8로 시작했습니다.    
-NewStartTreeViews 프로젝트에 사용한 UI와 MVVM에 대한 이야기입니다.
+NewStartTreeViews 프로젝트에 사용한 UI에 대한 이야기입니다.
 <br />  
 
 ## 개발정보
@@ -109,18 +123,17 @@ NewStartTreeViews 프로젝트에 사용한 UI와 MVVM에 대한 이야기입니
 ## 프로젝트구조
 * 📁 Directory    
   * 📃 DirectoryStructure.cs 
-* 📁 Data   
    * 📃 DirectoryItem.cs
    * 📃 DirectoryItemType.cs     
 * 📁 ViewModels    
    * 📃 BaseViewModel.cs
    * 📃 RelayCommand.cs
    * 📃 DirectoryItemViewModel.cs
-   * 📃 DirectoryStructureViewModel.cs
+   * 📃 DirectoryStructureViewModel.cs                
 * 📃 HeaderToImageConverter.cs
 <br />   
 
-## UI 설명 목차
+## UI 로직 목차
 - [BaseViewModel](#BaseViewModel)
 - [RelayCommand](#RelayCommand)
 - [DirectoryItem](#DirectoryItem)
