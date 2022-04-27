@@ -7,8 +7,10 @@ namespace HowOldAreYouTest
     {
         AgeData WhatAge = new AgeData();
 
-        public int GetSetAge { get; set; }
-
-        public WindowViewModel() => GetSetAge = WhatAge.Age;
+        public int GetSetAge 
+        { 
+            get => WhatAge.Age;
+            set => WhatAge.Age = value;
+        }
     }
 }

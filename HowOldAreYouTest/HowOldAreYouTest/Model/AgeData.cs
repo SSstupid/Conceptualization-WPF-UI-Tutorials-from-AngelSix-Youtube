@@ -8,7 +8,7 @@ namespace HowOldAreYouTest
 {
     public class AgeData
     {
-        public int age= 24;
+        private int age= 24;
 
         public int Age
         {
