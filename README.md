@@ -14,6 +14,7 @@ AngelSix님의 유튜브 동영상을 보면서 WPF를 공부하고 있습니다
 * MVVM
 * NewStartTreeViews
 * Chating App
+* 오류해결 노트
 <br />  
 
 # MVVM
