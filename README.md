@@ -67,19 +67,19 @@ public int Age
     set => age = value;
 } 
 ```
-2. ViewModel에서 Model을 'whatAge'로 인스턴스화합니다.    
-3.  whatAge에서 받아 GetSetAge의 값을 셋팅합니다.   
-4.  GetSetAge를 View에게 반환합니다.    
+2. ViewModel에서 Model(AgeData)을 'whatAge'로 인스턴스화합니다.    
+3. whatAge에서 받아 GetSetAge의 값을 셋팅합니다.   
+4. GetSetAge를 View에게 반환합니다.    
     
 
               
-느낀점 노트 (후에 정리 할것)
+느낀점 노트 (후에 정리 할것)       
 MVVM은 구체적으로 확립된 개념이 아니다.  (Model, View, ViewModel로 나눈다는 개념이지만 그 나누는 방법과 View와 ViewModel을 구분하는 구체적인 것이 없다.)
 근거는 많은 사람들이 MVVM 패턴이 가장 중요하다고 하지만   
 사실 MVVM은 "이것이다"라고 하는 명확하고 정확한 설명이 없다. 즉 MVVM에 대한 설명을 듣고 곧 바로 이해 할 수가 없다(처음 접하는 경우),   
 MVVM은 말로 설명하기가 어렵고 경험함으로 써 익힐 수 있다고 한다.   
 그래서 받은 느낌은 "MVVM에서 지켜할 기준은 있지만 정해진 형식은 없다"입니다.   
-(여러 타입의 View, ViewModel, Model이 있는 것 같습니다.)                    
+(여러 타입의 ViewModel, Model이 있는 것 같습니다.)                    
                   
 다만 지켜할 MVVM의 기준이 있습니다.   
 1.ViewModel은 View와 특별한 의존성을 가지지 않는다. (ViewModel은 그 자체로 존재 할 수 있다.)    
