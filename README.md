@@ -20,6 +20,7 @@ AngelSix님의 유튜브 동영상을 보면서 WPF를 공부하고 있습니다
 **현재 정리 중**       
 ![MVVM](https://user-images.githubusercontent.com/90036120/165052637-8c495f75-0cef-4925-ad6b-4180e7177909.png)
 
+(MVVM에 대한 각 개념은 땡겨와서 정리할 것 그 후 개인적인 의견 코멘트 달기)      
 View는 디자이너 영역으로 눈에 보여지는 그래픽입니다.                   
                   
 ViewModel은 View와 Model사이에서 연결 해주는 역활입니다.(전달자)                  
