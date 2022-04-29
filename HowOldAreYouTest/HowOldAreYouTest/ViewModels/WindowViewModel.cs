@@ -5,12 +5,12 @@ namespace HowOldAreYouTest
 {
     public class WindowViewModel : BaseViewModel
     {
-        AgeData WhatAge = new AgeData();
+        AgeData whatAge = new AgeData();
 
         public int GetSetAge 
         { 
-            get => WhatAge.Age;
-            set => WhatAge.Age = value;
+            get => whatAge.Age;
+            set => whatAge.Age = value;
         }
     }
 }
