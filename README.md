@@ -101,8 +101,8 @@ View와 ViewModel, Model 이렇게 세분화 시킴으로써
 디자인, 동작, 데이터 이런 식으로 분리를 할 수있다.   
 개발자가 혼자 모두 처리하는 방식이 있다고 하면,   
 MVVM형식은 : View부분은 디자니어, ViewModel은 개발자, Model은 서버와 연동함으로 써 데이터를 가져 올 수있게 된다.     
-이렇게 세분화되어 만들어진 UI는 잘 다듬어서 다른 곳에서 재사용이 가능해진다.(크로스 플랫폼)    
-또는 같은 플랫폼에서 UI를 재사용해 개발 시간을 단축 시킬 수 있다.               
+이렇게 세분화되어 만들어진 UI 로직은 잘 다듬어서 다른 곳에서 재사용이 가능해진다.(크로스 플랫폼)    
+또는 같은 플랫폼에서 UI 로직을 재사용해 개발 시간을 단축 시킬 수 있다.               
      
 <br />        
 
@@ -112,9 +112,7 @@ DataContext를 통해 ViewModel을 할당한 뒤 Binding으로 연결된 propert
 View와 ViewModel 간의 관계를 느슨한 결합으로 처리하는 방식을 (WPF에서)기본적으로 제공해 준다.           
     
 <br />    
-
-"xaml.cs 에 생성자 구문을 제외하고 아무것도 넣지마"    
-View에 로직을 넣지 말라는 것을 의미한다.   
+     
 View 로직이 들어가면 어떠한 형태로든지 간에 Model이나 ViewModel에 의존성을 갖게 된다.   
 (View는 디자이너 영역이다, 디자이너가 로직을 짜는 것은 이상하다.)
 (이견이 많음)
@@ -171,6 +169,8 @@ MVVM의 패턴을 강력하게 고집하는데 솔직하게 말하자면 굳이 
 # NewStartTreeViews   
 Nuget Package등 호환 문제로 .Net Framework 4.8로 시작했습니다.    
 NewStartTreeViews 프로젝트에 사용한 UI에 대한 이야기입니다.
+파일탐색 프로그램입니다.
+
 <br />  
 
 ## 개발정보
@@ -281,4 +281,6 @@ public class DirectoryItem
     public string Name { get { return this.Type == DirectoryItemType.Drive ? this.FullPath : DirectoryStructure.GetFileFolderName(this.FullPath); } }
 }
 ```
-Model부분으로 폴더의 타입, 경로, 이름을 설정해두었다
+Model부분으로 파일(item)의 타입, 경로, 이름을 설정해두었다
+
+### 
