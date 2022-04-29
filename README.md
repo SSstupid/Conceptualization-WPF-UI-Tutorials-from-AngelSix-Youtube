@@ -34,8 +34,43 @@ Command는 캡슐화된 것을 요청하는 부분입니다.
 여기서 View는 ABC라는 것을 요청만 할뿐 ABC가 무엇인지는 알 필요가 없습니다.               
 즉 View와 ViewModel간의 의존성이 없는 부분이라고 할 수 있습니다.           
 만약 View가 ABC를 요청할떄 'ABC는 무엇무엇이다' ViewModel아 너 이거 있니?라고 한다면 ViewModel은 ABC에 대한 고정적인 부분이 필요하고 의존성이 생깁니다. (재고할것)         
-(무엇인지 안다면 굳이 ViewModel에 요청 할 필요가 없다고 생각이 듭니다. View에서 바로 처리해버리면 되니까, 그러나 MVVM에서 View는 이러한 처리를 하지 않습니다.) 
+(무엇인지 안다면 굳이 ViewModel에 요청 할 필요가 없다고 생각이 듭니다. View에서 바로 처리해버리면 되니까, 그러나 MVVM에서 View는 이러한 처리를 하지 않습니다.)    
 
+Ex) 나이를 설정하고 출력하는 예제입니다.(HowOldAreYouTest)       
+![image](https://user-images.githubusercontent.com/90036120/165894987-8599f0bc-6d61-464f-b643-b8ee9d026947.png)
+```
+<!-- View(MainWindow.xaml) -->
+<TextBlock Text="나이를 설정하세요"/>
+<TextBox Text="{Binding GetSetAge}" />
+
+<TextBlock Text="나이 : "/>    
+<TextBox  Text="{Binding GetSetAge}" />    
+ ```
+ 1. View에서 'GetSetAge'를 호출합니다.
+ ```
+// ViewModel(WindowViewModel)
+AgeData whatAge = new AgeData();
+
+public int GetSetAge 
+{ 
+    get => whatAge.Age;
+    set => whatAge.Age = value;
+}
+   ```
+   ```
+// Model(AgeData)
+private int age= 24;
+
+public int Age
+{
+    get => age;
+    set => age = value;
+} 
+```
+2. ViewModel에서 Model을 'whatAge'로 인스턴스화합니다.    
+3.  whatAge에서 받아 GetSetAge의 값을 셋팅합니다.   
+4.  GetSetAge를 View에게 반환합니다.    
+    
 
               
 느낀점 노트 (후에 정리 할것)
