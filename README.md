@@ -196,6 +196,8 @@ NewStartTreeViews 프로젝트에 사용한 UI에 대한 이야기입니다.
 - [BaseViewModel](#BaseViewModel)
 - [RelayCommand](#RelayCommand)
 - [DirectoryItem](#DirectoryItem)
+- [DirectoryStucture](#DirectoryStucture)
+- [DirectoryItemViewModel](#DirectoryItemViewModel)
 <br />  
 
 ### BaseViewModel
