@@ -356,3 +356,105 @@ public class DirectoryStructure
 	}
 }
 ```
+
+### DirectoryItemViewModel
+```
+public class DirectoryItemViewModel : BaseViewModel
+{
+	#region Public Properties
+
+	/// The type of this item
+	public DirectoryItemType Type { get; set; }
+
+	public string ImageName => Type == DirectoryItemType.Drive ? "drive.png" : (Type == DirectoryItemType.File ? "file.png" : (IsExpanded ? "folder-open.png" :              "folder-closed.png"));
+
+	/// The full path to the item
+	public string FullPath { get; set; }
+
+
+	/// The name of this directory item
+	public string Name { get { return this.Type == DirectoryItemType.Drive ? this.FullPath : DirectoryStructure.GetFileFolderName(this.FullPath); }}
+
+
+	/// A list of all children contained inside this item
+	public ObservableCollection<DirectoryItemViewModel> Children { get; set; }
+
+	/// Indicates if this item can be expanded
+	public bool CanExpand { get { return this.Type != DirectoryItemType.File; }  }
+
+	public bool IsExpanded
+	{
+		get => this.Children?.Count(f => f != null) > 0;
+
+		set
+		{
+			// If th UI tells us to expand...
+			if (value == true)
+				// Find all children
+				Expand();
+			// If the UI tells us to close
+			else
+				this.ClearChildren();
+		}
+	}
+
+	#endregion
+
+	#region Public Commands
+
+	/// THe command to expand this item
+	public ICommand ExpandCommand { get; set; }
+
+	#endregion
+
+	#region Constructor
+
+	/// Default constructor
+	public DirectoryItemViewModel(string fullPath, DirectoryItemType type )
+	{
+		// Create commands
+		this.ExpandCommand = new RelayCommand(Expand);
+
+		// Set path and type
+		this.FullPath = fullPath;
+		this.Type = type;
+
+		// Setup the children as needed
+		this.ClearChildren();
+	}
+
+	#endregion
+
+	#region Helper Methods
+
+
+	/// Removes all children from the list, adding a dummy item to show the expand icon if required
+	private void ClearChildren()
+	{
+		// Clear items
+		this.Children = new ObservableCollection<DirectoryItemViewModel>();
+
+		// Show the expand arrow if we are not a file
+		if (this.Type != DirectoryItemType.File)
+			this.Children.Add(null);
+	}
+
+	#endregion
+
+	#region find children
+
+	/// Expands this directory and find all children
+	private void Expand()
+	{
+		if (this.Type == DirectoryItemType.File)
+			return;
+
+		//Find all children
+		var children = DirectoryStructure.GetDirectoryContents(this.FullPath);
+		this.Children = new ObservableCollection<DirectoryItemViewModel>(
+			children.Select(content => new DirectoryItemViewModel(content.FullPath, content.Type)));
+	}
+
+	#endregion
+}
+```
