@@ -198,6 +198,9 @@ NewStartTreeViews 프로젝트에 사용한 UI에 대한 이야기입니다.
 - [DirectoryItem](#DirectoryItem)
 - [DirectoryStructure](#DirectoryStructure)
 - [DirectoryItemViewModel](#DirectoryItemViewModel)
+- [DirectoryStructureViewModel](#DirectoryStructureViewModel)
+
+
 <br />  
 
 ### BaseViewModel
@@ -458,6 +461,34 @@ public class DirectoryItemViewModel : BaseViewModel
 		var children = DirectoryStructure.GetDirectoryContents(this.FullPath);
 		this.Children = new ObservableCollection<DirectoryItemViewModel>(
 			children.Select(content => new DirectoryItemViewModel(content.FullPath, content.Type)));
+	}
+
+	#endregion
+}
+```
+
+### DirectoryStructureViewModel
+```
+public class DirectoryStructureViewModel : BaseViewModel
+{
+	#region Public Properties
+
+	/// A list of all directories on the machine
+	public ObservableCollection<DirectoryItemViewModel> Items { get; set; }
+
+	#endregion
+
+	#region Constructor
+
+	/// Default constructor
+	public DirectoryStructureViewModel()
+	{
+		// Get the logical drives
+		var children = DirectoryStructure.GetlogicalDrives();
+
+		// Create the view models is from the data
+		this.Items = new ObservableCollection<DirectoryItemViewModel>(
+			children.Select(drive => new DirectoryItemViewModel(drive.FullPath, DirectoryItemType.Drive)));
 	}
 
 	#endregion
