@@ -289,23 +289,25 @@ public class DirectoryStructure
 {
 	public static List<DirectoryItem> GetlogicalDrives()
 	{
+		// 드라이브를 가져옵니다.(요약)
 		// DirectoryItem을 인스턴스화 후 FullPath에 드라이브(DriveInfo = Directory.GetLogicalDrives())를 세트 후 리스트화(List<DirectoryItem>) 시킵니다.
 		return Directory.GetLogicalDrives().Select(DriveInfo => new DirectoryItem { FullPath = DriveInfo, Type = DirectoryItemType.Drive }).ToList();
 	}
 
+	// 드라이브 하위 파일을 가져옵니다.
 	public static List<DirectoryItem> GetDirectoryContents(string fullPath)
 	{
-		//Create empty list
+		// 리스트 생성
 		var items = new List<DirectoryItem>();
 		
-		#region Get folders
+		#region Get folders 
 
-		// Try and get directories from the folder
-		// Ignoring any issues doing so
+		// 드라이브의 하위 폴더를 가져옵니다.
 		try
 		{
 			var dirs = Directory.GetDirectories(fullPath);
 
+			// Null 값이 아닌 경우 Type이 Folder면 리스트에 추가합니다.
 			if (dirs.Length > 0)
 				items.AddRange(dirs.Select(dir => new DirectoryItem { FullPath = dir, Type = DirectoryItemType.Folder }));
 		}
@@ -314,8 +316,7 @@ public class DirectoryStructure
 
 		#region Get Files
 
-		// Try and get files from the folder
-		// Ignoring any issues doing so
+		// 하위 파일을 가져 옵니다. (Not null and If type is File) , Get folders와 같습니다.
 		try
 		{
 			var fs = Directory.GetFiles(fullPath);
@@ -330,26 +331,28 @@ public class DirectoryStructure
 	}
 
 
-	/// Find the file or folder name from a full path
-
+	/// 경로에서 파일 or 폴더의 이름을 가져옵니다.
 	public static string GetFileFolderName(string path)
 	{
-		// If we have no path, return empty
+		// path가 null값일 경우 empty반환
 		if (string.IsNullOrEmpty(path))
 			return string.Empty;
 
-		// Make all slashes back slashes
+		// 이스케프 문자 '\' 처리 => '\\'
 		var normalizedPath = path.Replace('/', '\\');
 
-		//Find the last backlash in the path
+		// 마지막 '\\'의 위치를 찾습니다. ()
 		var lastIndex = normalizedPath.LastIndexOf('\\');
 
-		// If we don`t find a backslash, return the path itself
+		// '\'이 없을시 그대로 반환
 		if (lastIndex <= 0)
 			return path;
 
-		// Return the name after the last back slash
+		// 마지막 '//'뒤의 문자열을 반환합니다.
+		//Ex) C:\Program Files => Program Files
+		//Ex) C:\Program Files\dotnet\LICENSE.txt => License.txt
 		return path.Substring(lastIndex + 1);
+
 	}
 }
 ```
