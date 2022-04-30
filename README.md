@@ -12,8 +12,7 @@ AngelSix님의 유튜브 동영상을 보면서 WPF를 공부하고 있습니다
 
 # 프로젝트 구성
 * MVVM
-* NewStartTreeViews => 
-- [UI 로직 목차](#UI 로직 목차)
+* NewStartTreeViews
 * Chating App
 * 오류해결 노트
 <br />  
@@ -171,7 +170,7 @@ MVVM의 패턴을 강력하게 고집하는데 솔직하게 말하자면 굳이 
 Nuget Package등 호환 문제로 .Net Framework 4.8로 시작했습니다.    
 NewStartTreeViews 프로젝트에 사용한 UI에 대한 이야기입니다.
 파일탐색 프로그램입니다.
-
+- [UI 로직 목차](#UI 로직 목차)
 <br />  
 
 ## 개발정보
