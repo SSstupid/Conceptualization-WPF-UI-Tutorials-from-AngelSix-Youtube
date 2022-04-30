@@ -406,7 +406,7 @@ public class DirectoryItemViewModel : BaseViewModel
 
 	#region Public Commands
 
-	/// THe command to expand this item
+	/// The command to expand this item
 	public ICommand ExpandCommand { get; set; }
 
 	#endregion
@@ -416,7 +416,7 @@ public class DirectoryItemViewModel : BaseViewModel
 	/// Default constructor
 	public DirectoryItemViewModel(string fullPath, DirectoryItemType type )
 	{
-		// Create commands
+		// RelayCommand 생성
 		this.ExpandCommand = new RelayCommand(Expand);
 
 		// Set path and type
@@ -432,13 +432,13 @@ public class DirectoryItemViewModel : BaseViewModel
 	#region Helper Methods
 
 
-	/// Removes all children from the list, adding a dummy item to show the expand icon if required
+	/// 리스트 children 초기화
 	private void ClearChildren()
 	{
 		// Clear items
 		this.Children = new ObservableCollection<DirectoryItemViewModel>();
 
-		// Show the expand arrow if we are not a file
+		// 파일이 아니면 확장가능
 		if (this.Type != DirectoryItemType.File)
 			this.Children.Add(null);
 	}
@@ -450,10 +450,11 @@ public class DirectoryItemViewModel : BaseViewModel
 	/// Expands this directory and find all children
 	private void Expand()
 	{
+		// File의 경우 확장(열기)가 불가능하기 때문에 필요없는 문 같습니다.
 		if (this.Type == DirectoryItemType.File)
 			return;
 
-		//Find all children
+		// 하위파일을 찾습니다.
 		var children = DirectoryStructure.GetDirectoryContents(this.FullPath);
 		this.Children = new ObservableCollection<DirectoryItemViewModel>(
 			children.Select(content => new DirectoryItemViewModel(content.FullPath, content.Type)));
