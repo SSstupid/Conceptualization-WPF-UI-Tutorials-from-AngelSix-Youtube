@@ -361,6 +361,7 @@ public class DirectoryStructure
 
 ### DirectoryItemViewModel
 ```
+// BaseViewModel을 상속받아 'INotifyPropertyChanged'기능이 구현됩니다.
 public class DirectoryItemViewModel : BaseViewModel
 {
 	#region Public Properties
@@ -368,29 +369,30 @@ public class DirectoryItemViewModel : BaseViewModel
 	/// The type of this item
 	public DirectoryItemType Type { get; set; }
 
+	// 트리뷰에 추가된 아이템의 이미지를 넣습니다.(💾드라이브 or 📁폴더(2타입) or 📄파일)
 	public string ImageName => Type == DirectoryItemType.Drive ? "drive.png" : (Type == DirectoryItemType.File ? "file.png" : (IsExpanded ? "folder-open.png" :              "folder-closed.png"));
 
 	/// The full path to the item
 	public string FullPath { get; set; }
 
-
-	/// The name of this directory item
+	/// 아이템의 이름을 가져옵니다. 참조 => DirectoryStructure.GetFileFolderName
 	public string Name { get { return this.Type == DirectoryItemType.Drive ? this.FullPath : DirectoryStructure.GetFileFolderName(this.FullPath); }}
 
 
-	/// A list of all children contained inside this item
+	/// A list of all children contained inside this item (자산변경기 알림제공 기능)
 	public ObservableCollection<DirectoryItemViewModel> Children { get; set; }
 
-	/// Indicates if this item can be expanded
+	/// 왜있는지 모르겠네요. 없어도 잘 동작합니다.
 	public bool CanExpand { get { return this.Type != DirectoryItemType.File; }  }
 
 	public bool IsExpanded
 	{
+		// count가 0보다 크면 True반환
 		get => this.Children?.Count(f => f != null) > 0;
 
+		// set이 어떻게 들어오는지 모르겠다. 구조파악 필요.
 		set
 		{
-			// If th UI tells us to expand...
 			if (value == true)
 				// Find all children
 				Expand();
