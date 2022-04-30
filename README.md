@@ -379,7 +379,7 @@ public class DirectoryItemViewModel : BaseViewModel
 	public string Name { get { return this.Type == DirectoryItemType.Drive ? this.FullPath : DirectoryStructure.GetFileFolderName(this.FullPath); }}
 
 
-	/// A list of all children contained inside this item (자산변경기 알림제공 기능)
+	/// A list of all children contained inside this item (자산변경시 알림제공 기능)
 	public ObservableCollection<DirectoryItemViewModel> Children { get; set; }
 
 	/// 왜있는지 모르겠네요. 없어도 잘 동작합니다.
