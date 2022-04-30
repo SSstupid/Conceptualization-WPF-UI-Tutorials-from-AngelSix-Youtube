@@ -12,7 +12,8 @@ AngelSix님의 유튜브 동영상을 보면서 WPF를 공부하고 있습니다
 
 # 프로젝트 구성
 * MVVM
-* NewStartTreeViews => - [UI 로직 목차](#UI 로직 목차)
+* NewStartTreeViews => 
+- [UI 로직 목차](#UI 로직 목차)
 * Chating App
 * 오류해결 노트
 <br />  
