@@ -289,7 +289,7 @@ public class DirectoryStructure
 {
 	public static List<DirectoryItem> GetlogicalDrives()
 	{
-		// Get every logical drive on the mechine
+		// DirectoryItem을 인스턴스화 후 FullPath에 드라이브(DriveInfo = Directory.GetLogicalDrives())를 세트 후 리스트화(List<DirectoryItem>) 시킵니다.
 		return Directory.GetLogicalDrives().Select(DriveInfo => new DirectoryItem { FullPath = DriveInfo, Type = DirectoryItemType.Drive }).ToList();
 	}
 
