@@ -563,6 +563,7 @@ ResourceDictionary>
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="B.xaml" />
     </ResourceDictionary.MergedDictionaries>
+    
 <Style >
  ...
 	<TextBlock Style="{StaticResource SpinningText}"
