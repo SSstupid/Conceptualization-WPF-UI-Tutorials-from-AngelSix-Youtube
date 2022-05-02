@@ -518,3 +518,5 @@ public class HeaderToImageConverter : IValueConverter
 	}
 }
 ```
+서로 다른 데이터 타입을 바인딩하기 위해 (HeaderToImageConverter)IValueConverter를 사용합니다.
+아이템의 타입이 string인 ImageName을 바인딩하고 HeaderToImageConverter를 사용하여 BitmapImage로 변환합니다.
