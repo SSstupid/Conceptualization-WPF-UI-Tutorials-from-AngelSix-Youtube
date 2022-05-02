@@ -523,7 +523,7 @@ public class HeaderToImageConverter : IValueConverter
 아이템의 타입이 string인 ImageName을 바인딩하고 HeaderToImageConverter를 사용하여 BitmapImage로 변환합니다.		
 
 ## 오류해결 노트
-* Nuget Package 다운로드 오류		
+* **Nuget Package 다운로드 오류**	
 		
   Package 이름 : Microsoft.Windows.Shell			
   		
@@ -536,8 +536,9 @@ public class HeaderToImageConverter : IValueConverter
     구글 검색을 통해 설치 방법을 찾을 수 있습니다.     
     비쥬얼 스튜디오에서 도구 - Nuget 패키지 관리자 - 패키지 관리자 콘솔을 클릭합니다.      
     콘솔 창에서 'Install-Package Microsoft.Windows.Shell -Version 3.0.1' 타이핑 후 엔터를 하면 패키지를 다운 받을 수 있습니다.     
-    
-* "페이지’의 부분 선언은 다른 기본 클래스를 지정할 수 없습니다."    
+    <br />
+         
+* **"페이지’의 부분 선언은 다른 기본 클래스를 지정할 수 없습니다."**   
    LoginPage.cs에서 상속을 변경시 이 에러가 발생 했습니다.
    ```
    public partial class LoginPage : Page 
@@ -548,5 +549,37 @@ public class HeaderToImageConverter : IValueConverter
       
  ![image](https://user-images.githubusercontent.com/90036120/166200024-08e6dd41-3fc5-434e-bb21-1e7fde448a82.png)    
  LoginPage.g.i.cs를 확인해보니(사진) LoginPage.cs와(LoginPage : BasePage)  LoginPage.g.i.cs(LoginPage : Page)가 서로 다른 상속을 받고 있습니다.    
- 둘이 같은 상속으로 설정하면 됩니다.
- 
+ 둘이 같은 상속으로 설정하면 됩니다.    
+     
+     
+<br />
+     
+* **Exception: 이름이 'BaseTextBlockStyle’인 리소스를 찾을 수 없습니다.** (리소스 참조 문제)    
+![image](https://user-images.githubusercontent.com/90036120/166200703-654a287a-457c-4db1-9a57-d58ae9652369.png)   
+Ex)    
+```
+--A.xaml---
+<Style >
+ ...
+	<TextBlock Style="{StaticResource SpinningText}"
+		
+--B.xaml--
+<Style x:Key="SpinningText" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BaseTextBlockStyle}">
+```
+리소스에 등록된 A.xaml, B.xaml 에 각각 Style을 생성후     
+A.xaml - Style에서 B.xaml에 등록된 Style을 참조합니다.    
+```
+--App.xaml--
+<ResourceDictionary Source="A.xaml"/>
+<ResourceDictionary Source="B.xaml"/>
+```
+App.xaml에서 A.xaml을 먼저 참조합니다.   
+A.xaml에서 B.xaml에서 설정한 Style을 불러옵니다.        
+이 때 B.xaml을 참조하기 전이라 'style : SpinningText'에 대해 알지 못함으로    
+리소스를 참조하는 과정에서 오류가 납니다.   
+```
+--App.xaml--
+<ResourceDictionary Source="B.xaml"/>
+<ResourceDictionary Source="A.xaml"/>
+```
+위와 같이 참조순서를 알맞게 변경해주면 해결됩니다.
