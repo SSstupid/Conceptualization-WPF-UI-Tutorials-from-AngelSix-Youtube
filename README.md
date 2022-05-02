@@ -554,11 +554,15 @@ public class HeaderToImageConverter : IValueConverter
      
 <br />
      
-* **Exception: 이름이 'BaseTextBlockStyle’인 리소스를 찾을 수 없습니다.** (리소스 참조 문제)    
+* **Exception: 이름이 'BaseTextBlockStyle’인 리소스를 찾을 수 없습니다.** (사전 병합 후 리소스를 찾 을 수 없습니다.)   
 ![image](https://user-images.githubusercontent.com/90036120/166200703-654a287a-457c-4db1-9a57-d58ae9652369.png)   
-Ex)    
+Ex)    A.xaml에서 B.xaml을 병합합니다.
 ```
 --A.xaml---
+ResourceDictionary>
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="B.xaml" />
+    </ResourceDictionary.MergedDictionaries>
 <Style >
  ...
 	<TextBlock Style="{StaticResource SpinningText}"
@@ -575,7 +579,7 @@ A.xaml - Style에서 B.xaml에 등록된 Style을 참조합니다.
 ```
 App.xaml에서 A.xaml을 먼저 참조합니다.   
 A.xaml에서 B.xaml에서 설정한 Style을 불러옵니다.        
-이 때 B.xaml을 참조하기 전이라 'style : SpinningText'에 대해 알지 못함으로    
+이 때 B.xaml을 참조하기 전이라 'style : SpinningText', 'B.xaml'에 대해 알지 못함으로    
 리소스를 참조하는 과정에서 오류가 납니다.   
 ```
 --App.xaml--
