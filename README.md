@@ -547,6 +547,6 @@ public class HeaderToImageConverter : IValueConverter
  LoginPage.g.i.cs을 볼 수 있습니다. 
       
  ![image](https://user-images.githubusercontent.com/90036120/166200024-08e6dd41-3fc5-434e-bb21-1e7fde448a82.png)    
- 사진을 보시면 LoginPage.cs와(LoginPage : BasePage)  LoginPage.g.i.cs(LoginPage : Page)가 서로 다른 상속을 받고 있습니다.    
+ LoginPage.g.i.cs를 확인해보니(사진) LoginPage.cs와(LoginPage : BasePage)  LoginPage.g.i.cs(LoginPage : Page)가 서로 다른 상속을 받고 있습니다.    
  둘이 같은 상속으로 설정하면 됩니다.
  
