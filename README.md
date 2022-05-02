@@ -518,16 +518,21 @@ public class HeaderToImageConverter : IValueConverter
 	}
 }
 ```
-서로 다른 데이터 타입을 바인딩하기 위해 (HeaderToImageConverter)IValueConverter를 사용합니다.
-아이템의 타입이 string인 ImageName을 바인딩하고 HeaderToImageConverter를 사용하여 BitmapImage로 변환합니다.
+
+서로 다른 데이터 타입을 바인딩하기 위해 (HeaderToImageConverter)IValueConverter를 사용합니다.        
+아이템의 타입이 string인 ImageName을 바인딩하고 HeaderToImageConverter를 사용하여 BitmapImage로 변환합니다.		
 
 ## 오류해결 노트
 * Nuget Package 다운로드 오류		
-  Package 이름 : Microsoft.Windows.Shell				
+		
+  Package 이름 : Microsoft.Windows.Shell			
+  		
   <img src=https://user-images.githubusercontent.com/90036120/166197351-502e1ff4-3a23-48c5-ae2f-fd855b29ace0.png width="500" height="370"/>				
-  <br />		
-  Nuget Package에서 Microsoft.Windows.Shell을 제공하지 않기 때문에 검색시 찾을 수 없습니다.			
-  ![image](https://user-images.githubusercontent.com/90036120/166197658-9283284a-e34b-4336-9abd-6681eef1bc01.png)				
-  구글 검색을 통해 설치 방법을 찾을 수 있습니다.						
-  비쥬얼 스튜디오에서 도구 - Nuget 패키지 관리자 - 패키지 관리자 콘솔을 클릭합니다.						
-  콘솔 창에서 'Install-Package Microsoft.Windows.Shell -Version 3.0.1' 타이핑 후 엔터를 하면 패키지를 다운 받을 수 있습니다.				
+  		
+  Nuget Package에서 Microsoft.Windows.Shell을 제공하지 않기 때문에 검색시 찾을 수 없습니다.		
+      
+  ![image](https://user-images.githubusercontent.com/90036120/166197658-9283284a-e34b-4336-9abd-6681eef1bc01.png)			
+  
+    구글 검색을 통해 설치 방법을 찾을 수 있습니다.     
+    비쥬얼 스튜디오에서 도구 - Nuget 패키지 관리자 - 패키지 관리자 콘솔을 클릭합니다.      
+    콘솔 창에서 'Install-Package Microsoft.Windows.Shell -Version 3.0.1' 타이핑 후 엔터를 하면 패키지를 다운 받을 수 있습니다.   
