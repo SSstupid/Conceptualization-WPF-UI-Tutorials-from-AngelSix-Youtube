@@ -535,4 +535,18 @@ public class HeaderToImageConverter : IValueConverter
   
     구글 검색을 통해 설치 방법을 찾을 수 있습니다.     
     비쥬얼 스튜디오에서 도구 - Nuget 패키지 관리자 - 패키지 관리자 콘솔을 클릭합니다.      
-    콘솔 창에서 'Install-Package Microsoft.Windows.Shell -Version 3.0.1' 타이핑 후 엔터를 하면 패키지를 다운 받을 수 있습니다.   
+    콘솔 창에서 'Install-Package Microsoft.Windows.Shell -Version 3.0.1' 타이핑 후 엔터를 하면 패키지를 다운 받을 수 있습니다.     
+    
+* "페이지’의 부분 선언은 다른 기본 클래스를 지정할 수 없습니다."    
+   LoginPage.cs에서 상속을 변경시 이 에러가 발생 했습니다.
+   ```
+   public partial class LoginPage : Page 
+   =>  public partial class LoginPage : BasePage
+   ```
+ public partial class LoginPage에서 LoginPage 코드 정의로 가면(LginPage를 드래그 후 F12 클릭)    
+ LoginPage.g.i.cs을 볼 수 있습니다. 
+      
+ ![image](https://user-images.githubusercontent.com/90036120/166200024-08e6dd41-3fc5-434e-bb21-1e7fde448a82.png)    
+ 사진을 보시면 LoginPage.cs와(LoginPage : BasePage)  LoginPage.g.i.cs(LoginPage : Page)가 서로 다른 상속을 받고 있습니다.    
+ 둘이 같은 상속으로 설정하면 됩니다.
+ 
