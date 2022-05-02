@@ -199,6 +199,7 @@ NewStartTreeViews 프로젝트에 사용한 UI에 대한 이야기입니다.
 - [DirectoryStructure](#DirectoryStructure)
 - [DirectoryItemViewModel](#DirectoryItemViewModel)
 - [DirectoryStructureViewModel](#DirectoryStructureViewModel)
+- [HeaderToImageConverter](#HeaderToImageConverter)
 
 
 <br />  
@@ -492,5 +493,25 @@ public class DirectoryStructureViewModel : BaseViewModel
 	}
 
 	#endregion
+}
+```
+
+### HeaderToImageConverter
+```
+/// Coverts a full path to a specific image type of a drive, folder or file
+[ValueConversion(typeof(DirectoryItemType), typeof(BitmapImage))]
+public class HeaderToImageConverter : IValueConverter
+{
+	public static HeaderToImageConverter Instance = new HeaderToImageConverter();
+
+	public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+	{
+		return new BitmapImage(new Uri($"pack://application:,,,/Images/{value}"));
+	}
+
+	public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+	{
+		throw new NotImplementedException();
+	}
 }
 ```
