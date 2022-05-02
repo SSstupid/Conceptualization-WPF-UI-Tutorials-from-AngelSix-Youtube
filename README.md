@@ -498,17 +498,20 @@ public class DirectoryStructureViewModel : BaseViewModel
 
 ### HeaderToImageConverter
 ```
-/// Coverts a full path to a specific image type of a drive, folder or file
+/// 아이템의 타입에 맞게 이미지를 변환 합니다.
 [ValueConversion(typeof(DirectoryItemType), typeof(BitmapImage))]
 public class HeaderToImageConverter : IValueConverter
 {
+	// 바인딩시 경로를 설정하기위해 추가 합니다. => (DataContext = new HeaderToImageConverter)
 	public static HeaderToImageConverter Instance = new HeaderToImageConverter();
-
+	
+	//ViewModel => View 가는 함수 Convert
 	public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 	{
 		return new BitmapImage(new Uri($"pack://application:,,,/Images/{value}"));
 	}
 
+	//View => ViewModel 가는 함수 ConvertBack
 	public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 	{
 		throw new NotImplementedException();
