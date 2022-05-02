@@ -283,7 +283,7 @@ public class DirectoryItem
     // The absolute path to this item
     public string FullPath { get; set; }
 
-    // The name of this directory item  //탐색한 파일의 타입을 읽어옴 => 파일이 드라이브 or 폴더인지 구분하는 문
+    //탐색한 파일의 타입을 읽어옴 => 파일이 드라이브 or 폴더인지 구분하는 문
     public string Name { get { return this.Type == DirectoryItemType.Drive ? this.FullPath : DirectoryStructure.GetFileFolderName(this.FullPath); } }
 }
 ```
@@ -295,7 +295,7 @@ public class DirectoryStructure
 {
 	public static List<DirectoryItem> GetlogicalDrives()
 	{
-		// 드라이브를 가져옵니다.(요약)
+		// 드라이브를 가져옵니다.
 		// DirectoryItem을 인스턴스화 후 FullPath에 드라이브(DriveInfo = Directory.GetLogicalDrives())를 세트 후 리스트화(List<DirectoryItem>) 시킵니다.
 		return Directory.GetLogicalDrives().Select(DriveInfo => new DirectoryItem { FullPath = DriveInfo, Type = DirectoryItemType.Drive }).ToList();
 	}
@@ -373,7 +373,7 @@ public class DirectoryItemViewModel : BaseViewModel
 	/// The type of this item
 	public DirectoryItemType Type { get; set; }
 
-	// 트리뷰에 추가된 아이템의 이미지를 넣습니다.(💾드라이브 or 📁폴더(2타입) or 📄파일)
+	// 트리뷰에 추가된 아이템의 이미지를 설정합니다..(💾드라이브 or 📁폴더(2타입) or 📄파일)
 	public string ImageName => Type == DirectoryItemType.Drive ? "drive.png" : (Type == DirectoryItemType.File ? "file.png" : (IsExpanded ? "folder-open.png" :              "folder-closed.png"));
 
 	/// The full path to the item
