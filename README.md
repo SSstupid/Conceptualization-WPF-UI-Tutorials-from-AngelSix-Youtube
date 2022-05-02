@@ -498,7 +498,7 @@ public class DirectoryStructureViewModel : BaseViewModel
 
 ### HeaderToImageConverter
 ```
-/// 아이템의 타입에 맞게 이미지를 변환 합니다.
+/// 아이템의 타입에 맞게 이미지를 변환합니다.
 [ValueConversion(typeof(DirectoryItemType), typeof(BitmapImage))]
 public class HeaderToImageConverter : IValueConverter
 {
