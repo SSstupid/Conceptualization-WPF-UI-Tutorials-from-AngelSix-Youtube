@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\rlawo\source\repos\Fasetto.word.Framework\Fasetto.word.Framework\obj\Debug\
+C:\Users\rlawo\Documents\GitHub\Conceptualization-WPF-UI-Tutorials-from-AngelSix-Youtube\Fasetto.word.Framework Ver2\Fasetto.word.Framework\obj\Debug\
 Fasetto.Word.Framework
 none
 false
 DEBUG;TRACE
-C:\Users\rlawo\source\repos\Fasetto.word.Framework\Fasetto.word.Framework\App.xaml
+C:\Users\rlawo\Documents\GitHub\Conceptualization-WPF-UI-Tutorials-from-AngelSix-Youtube\Fasetto.word.Framework Ver2\Fasetto.word.Framework\App.xaml
 12-1898355750
 171300587844
-28-2031195980
-172050307473
+29-109417859
+17710105369
 Controls\Chat\ChatListControl.xaml;Controls\Chat\ChatListItemControl.xaml;Controls\SideMenuControl.xaml;Page\ChatPage.xaml;Page\RegisterPage.xaml;Page\LoginPage.xaml;MainWindow.xaml;Style\Buttons.xaml;Style\Colors.xaml;Style\Fonts.xaml;Style\Texts.xaml;Style\Windows.xaml;
 
-False
+True
 
